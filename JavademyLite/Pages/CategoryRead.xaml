@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="JavademyLite.Pages.CategoryRead"
+             Title="CategoryRead">
+
+    <Grid Padding="5" RowSpacing="5" ColumnSpacing="5"
+          RowDefinitions="Auto,Auto,Auto,Auto,*">
+        <VerticalStackLayout Spacing="8">
+            <Entry x:Name="name"
+           Placeholder="Enter name" />
+
+            <Entry x:Name="description"
+            Placeholder="Enter description" />
+        </VerticalStackLayout>
+
+        <Button Text="Add Category"
+            Grid.Row="1"
+            Clicked="OnNewButtonClicked" />
+
+        <Label x:Name="statusMessage"
+           TextColor="{StaticResource Primary}"
+           Grid.Row="2" />
+
+        <Button Text="Get All Categories"
+            Grid.Row="3"
+            Clicked="OnGetButtonClicked" />
+
+        <CollectionView x:Name="categoriesList" Grid.Row="4">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid ColumnDefinitions="*,2*">
+                        <VerticalStackLayout Spacing="8">
+                            <Label Text="{Binding CategoryId}" TextColor="{StaticResource Secondary}"/>
+                            <Label Grid.Column="1" Text="{Binding Name}" TextColor="{StaticResource Secondary}"/>
+                            <Label Grid.Column="1" Text="{Binding Description}" TextColor="{StaticResource Secondary}"/>
+                        </VerticalStackLayout>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+    </Grid>
+</ContentPage>
